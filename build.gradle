@@ -1,0 +1,7 @@
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+tasks.register('specialCopy', Copy){
+    from 'settings.gradle'
+    into project.buildDir
+}
