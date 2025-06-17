@@ -1,0 +1,15 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
+plugins {
+	id 'base'
+}
+
+defaultTasks 'generateDescriptions'
+
+tasks.register('generateDescriptions', Copy){
+	group 'Theme Park'
+	description 'Generate descriptions including token substitution'
+	from 'descriptions'
+	into "$buildDir/descriptions"
+	filter(ReplaceTokens, tokens: [THEME_PARK_NAME: "Grelephant's Wonder World"])
+}
