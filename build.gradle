@@ -8,8 +8,23 @@ defaultTasks 'generateDescriptions'
 
 tasks.register('generateDescriptions', Copy){
 	group 'Theme Park'
-	description 'Generate descriptions including token substitution'
+	description 'Copies the theme park ride descriptions'
 	from 'descriptions'
 	into "$buildDir/descriptions"
 	filter(ReplaceTokens, tokens: [THEME_PARK_NAME: "Grelephant's Wonder World"])
+}
+
+tasks.register('closuresInAction'){
+	doLast {
+		println 'Task definition using closures'
+	}
+}
+
+def pickupPhone(name, phoneNoise){
+	phoneNoise()
+	println 'Hello ? ' + name + ' here'
+}
+
+pickupPhone('Tom'){
+	println 'Ring Ring'
 }
